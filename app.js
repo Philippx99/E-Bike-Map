@@ -137,7 +137,7 @@ function hav(a, b) {
 }
 
 async function ors(pts, profile) {
-  const r = await fetch(`https://api.openrouteservice.org/v2/directions/${profile}/geojson`, {
+  const r = await fetch(`https://api.heigit.org/openrouteservice/v2/directions/${profile}/geojson`, {
     method: "POST",
     headers: { Authorization: ORS_KEY, "Content-Type": "application/json" },
     body: JSON.stringify({ coordinates: pts.map(p => [p[1], p[0]]) })
