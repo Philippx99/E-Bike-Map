@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>E-Bike-Map</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header><b>⚡ E-Bike-Map</b><span id="who"></span><button id="logout" hidden>Abmelden</button></header>
+
+<section id="auth">
+  <h2>Anmelden</h2>
+  <input id="email" type="email" placeholder="E-Mail" autocomplete="email">
+  <input id="pw" type="password" placeholder="Passwort (min. 6 Zeichen)" autocomplete="current-password">
+  <div class="row"><button id="login">Anmelden</button><button id="register" class="sec">Registrieren</button></div>
+  <p id="authmsg" class="msg"></p>
+</section>
+
+<main id="app" hidden>
+  <details open>
+    <summary>Meine Fahrzeuge</summary>
+    <div class="row">
+      <input id="vname" placeholder="Name (z. B. Cube Reaction)">
+      <select id="vtype"><option value="ebike">E-Bike</option><option value="emofa">E-Mofa</option></select>
+      <input id="vrange" type="number" min="5" max="300" placeholder="Reichweite km">
+      <button id="vadd">Hinzufügen</button>
+    </div>
+    <ul id="vlist"></ul>
+  </details>
+
+  <details open>
+    <summary>Route planen</summary>
+    <select id="veh"></select>
+    <div class="row">
+      <button data-mode="start" class="mode on">Start</button>
+      <button data-mode="end" class="mode">Ziel</button>
+      <button data-mode="charge" class="mode">+ Ladepunkt</button>
+    </div>
+    <div class="row"><input id="q" placeholder="Adresse suchen (setzt Start/Ziel)"><button id="search" class="sec">Suchen</button></div>
+    <button id="go">Route berechnen</button>
+    <p id="msg" class="msg"></p>
+  </details>
+
+  <div id="map"></div>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script src="config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
